@@ -1,0 +1,15 @@
+# docker build . -t prikid/python_psycopg2_pandas_orjson:3.10-alpine --push .
+# docker buildx build --platform linux/amd64,linux/arm64 -t prikid/python_psycopg2_pandas_orjson:3.10-alpine --push .
+
+FROM python:3.10-alpine3.16
+LABEL maintainer="Serhii Riabcheniuk"
+ENV PYTHONUNBUFFERED 1
+RUN --mount=type=cache,target=/root/.cache/pip \
+    apk add --update --no-cache --virtual .build-deps gcc g++ musl-dev rust cargo patchelf libpq-dev libffi-dev \
+    && apk add --no-cache libpq \
+    && python -m venv /py \
+    && /py/bin/pip install --upgrade pip \
+    && /py/bin/pip install orjson~=3.8.3 psycopg2~=2.9.5 pandas~=1.5.2 \
+    && apk del .build-deps
+
+CMD tail -f /dev/null
