@@ -9,7 +9,7 @@ RUN --mount=type=cache,target=/root/.cache/pip \
     && apk add --no-cache libpq \
     && python -m venv /py \
     && /py/bin/pip install --upgrade pip \
-    && /py/bin/pip install orjson==3.8.3 psycopg2==2.9.5 pandas==1.5.2 \
+    && /py/bin/pip install orjson==3.8.3 psycopg2==2.9.5 pandas==1.5.2 numpy==1.26.2 \
     && apk del .build-deps
 
 CMD tail -f /dev/null
