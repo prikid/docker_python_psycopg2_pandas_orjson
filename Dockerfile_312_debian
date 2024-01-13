@@ -4,13 +4,6 @@ FROM python:3.12-slim-bookworm
 LABEL maintainer="Serhii Riabcheniuk"
 ENV PYTHONUNBUFFERED 1
 ENV PYBIN /py/bin
-RUN --mount=type=cache,target=/root/.cache/pip \
-    apk add --update --no-cache --virtual .build-deps gcc g++ musl-dev rust cargo patchelf libpq-dev libffi-dev \
-    && apk add --no-cache libpq \
-    && python -m venv /py \
-    && /py/bin/pip install --upgrade pip \
-    && /py/bin/pip install orjson==3.9.10 psycopg2==2.9.9 pandas==1.5.3 numpy==1.26.2 \
-    && apk del .build-deps
 
 RUN apt-get update -y && \
     apt-get install -y --no-install-recommends libpq-dev gcc python3-dev && \
