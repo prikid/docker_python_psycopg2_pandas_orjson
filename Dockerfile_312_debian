@@ -9,7 +9,7 @@ RUN apt-get update -y && \
     apt-get install -y --no-install-recommends libpq-dev gcc python3-dev && \
     python -m venv /py && \
     ${PYBIN}/pip install --upgrade pip && \
-    ${PYBIN}/pip install orjson==3.9.10 psycopg2==2.9.9 pandas==1.5.3 numpy==1.26.2 && \
+    ${PYBIN}/pip install orjson==3.9.10 psycopg2==2.9.9 pandas==2.1.4 numpy==1.26.3 pyarrow==14.0.2 && \
     apt-get remove -y libpq-dev gcc python3-dev && \
     apt-get autoremove -y && \
     apt-get clean && \
