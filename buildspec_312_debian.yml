@@ -11,8 +11,8 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -f Dockerfile_312_debian -t python_psycopg2_pandas_orjson .
-      - docker push python_psycopg2_pandas_orjson prikid/python_psycopg2_pandas_orjson:3.12-debian
+      - docker build -f Dockerfile_312_debian -t prikid/python_psycopg2_pandas_orjson:3.12-debian .
+      - docker push prikid/python_psycopg2_pandas_orjson:3.12-debian
   post_build:
     commands:
       - echo Build completed on `date`
