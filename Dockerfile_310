@@ -1,6 +1,6 @@
-# docker build . -t prikid/python_psycopg2_pandas_orjson:3.12-alpine --push .
-# docker buildx build --platform linux/amd64,linux/arm64 -t prikid/python_psycopg2_pandas_orjson:3.12-alpine --push .
-# docker buildx build -f Dockerfile_312 --platform linux/amd64,linux/arm64 -t prikid/python_psycopg2_pandas_orjson:3.12-alpine --push .
+# docker build . -t prikid/python_psycopg2_pandas_orjson:3.10-alpine --push .
+# docker buildx build --platform linux/amd64,linux/arm64 -t prikid/python_psycopg2_pandas_orjson:3.10-alpine --push .
+# docker buildx build -f Dockerfile_310 --platform linux/amd64,linux/arm64 -t prikid/python_psycopg2_pandas_orjson:3.10-alpine --push .
 
 FROM python:3.10-alpine3.19
 LABEL maintainer="Serhii Riabcheniuk"
