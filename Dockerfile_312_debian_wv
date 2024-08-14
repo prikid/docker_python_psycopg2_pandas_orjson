@@ -1,0 +1,15 @@
+# docker buildx build -f Dockerfile_312_debian_wv --platform linux/amd64,linux/arm64 -t prikid/python_psycopg2_pandas_orjson:3.12-debian_wv --push .
+
+FROM python:3.12-slim-bookworm
+LABEL maintainer="Serhii Riabcheniuk"
+ENV PYTHONUNBUFFERED 1
+
+RUN apt-get update -y && \
+    apt-get install -y --no-install-recommends libpq-dev gcc python3-dev && \
+    pip install --upgrade pip && \
+    pip install orjson~=3.10 psycopg2~=2.9.9 pandas~=2.2 numpy~=1.26 pyarrow~=17.0 && \
+    apt-get autoremove -y && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+CMD tail -f /dev/null
